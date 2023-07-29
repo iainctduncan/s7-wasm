@@ -1,0 +1,30 @@
+notes on getting s7 working with WASM
+
+********************************************************************************
+Building:
+- source emcripten source "/Users/iainduncan/Documents/code/emsdk/emsdk_env.sh"
+
+- to build s7 as a wasm module for linking
+  emcc -c s7.c -o s7.wasm
+
+- to build the whole thing (recompiles s7)
+  (not sure if -ldl and -lm are actually necessary?)
+  emcc simple.c s7.c -o simple.js -L. -I. -ldl -lm
+
+- or link with s7 as wasm
+  emcc simple.c s7.wasm -o simple.js -L. -I. -ldl -lm
+
+- test it:
+  node simple.js
+
+- build and generate html file:
+  emcc simple.c s7.wasm -o simple.js -L. -I. -ldl -lm -o simple.html
+
+- serve local directory
+$ python3 -m http.server
+
+- building with exported functions
+emcc simple.c s7.wasm -o simple.js -L. -I. -ldl -lm -s EXPORTED_RUNTIME_METHODS=['ccall','UTF8ToString']
+
+- building with exported functions and js merged code for callbacks from C
+emcc simple.c s7.wasm --js-library mergeinto.js -o simple.js -L. -I. -ldl -lm -s EXPORTED_RUNTIME_METHODS=['ccall','UTF8ToString']

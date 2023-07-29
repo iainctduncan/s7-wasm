@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #outer-container {
+            width: 600px;
+            margin: 1em auto 0 auto;
+            border: 1px solid #444;
+            padding: 1em;
+        }
+        #repl-input {
+            min-height: 4em;
+            width: 100%;
+        }
+        #results {
+            margin-top: 1em;
+            background: #eee;
+            min-height: 4em;
+            padding: .5em;
+        }
+    </style>
+</head>
+<body>
+<div id="outer-container">
+  <h3>s7-wasm host page</h3>
+  <textarea id="repl-input">(+ 1 2)</textarea>
+  <div>
+      <button onclick="evalString();">Eval</button>
+      <button onclick="add();">Add 1 + 2</button>
+  </div>
+  <div id="results">
+  </div>
+  <script async type="text/javascript" src="simple.js"></script>
+  <script async type="text/javascript" src="main.js"></script>
+</div>
+
+</body>
+</html>

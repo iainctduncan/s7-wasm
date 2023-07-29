@@ -1,0 +1,14 @@
+TODO
+
+- DONE get s7 running
+- DONE JS calling an exported function from C
+  - working with int
+- DONE C calling back into JS
+  - uses mergeinto.js to define the wrapper and new build command (see notes)
+
+- JS sending string to eval, capturing and displaying response
+
+
+DONE:
+- got s7 compiling and calling a function
+- made a host with a js wrapper function "add" and a C function, add
